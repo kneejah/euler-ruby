@@ -7,7 +7,7 @@ endNum = Math.sqrt(testNum).to_i
 
 print "ending at " + endNum.to_s + "\n"
 
-for i in 1..endNum
+(1..endNum).each do |i|
 
   if i % 2 != 0 && i % 3 != 0
     if testNum % i == 0
