@@ -6,7 +6,7 @@ end
 
 sum = 0
 
-(1..999).to_a.each do |val|
+(1..999).each do |val|
   if (is_mult(val))
     sum += val
   end
