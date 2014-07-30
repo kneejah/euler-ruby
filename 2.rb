@@ -1,34 +1,41 @@
 #!/home/kneejah/.rbenv/shims/ruby
 
-fiboHash = {}
+class MyFibo
+  def initialize()
+    @fiboHash = {}
+  end
 
-def fibo(num, hash)
+  def getVal(num)
 
-    if hash.key?(num)
-        return hash[num]
+    if @fiboHash.key?(num)
+      return @fiboHash[num]
     end
 
     if num < 2
-        hash[num] = num
-        return num
+      @fiboHash[num] = num
+      return num
     end
 
-    val = fibo(num - 1, hash) + fibo(num - 2, hash)
-    hash[num] = val
+    val = self.getVal(num - 1) + self.getVal(num - 2)
+    @fiboHash[num] = val
     return val
+
+  end
+
 end
+
+myFibo = MyFibo.new
 
 sum = 0
 currVal = 0
 
-while (currFib = fibo(currVal, fiboHash)) < 4000000
-    print currVal.to_s + " -> " + currFib.to_s + "\n"
-    currVal += 1
+while (currFib = myFibo.getVal(currVal)) < 4000000
+  print currVal.to_s + " -> " + currFib.to_s + "\n"
+  currVal += 1
 
-    if currFib % 2 == 0
-        sum += currFib
-    end
-
+  if currFib % 2 == 0
+      sum += currFib
+  end
 end
 
 print "sum -> " + sum.to_s + "\n"
